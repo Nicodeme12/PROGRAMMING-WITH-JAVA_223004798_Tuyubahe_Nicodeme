@@ -1,0 +1,225 @@
+
+                             
+GROUP ASSIGNMENT
+Group Member: 1. TUYUBAHE Nicodeme:223004798
+              2. MPUMURE Esperance:223013760
+	      3. Belyse Keyitesi    :22019996
+
+
+
+
+Group 6:- Project:Real Estate Management System.
+
+
+
+
+
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 370
+Server version: 5.5.5-10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++-------------------------------+
+| Database                      |
++-------------------------------+
+| information_schema            |
+| mysql                         |
+| performance_schema            |
+| phpmyadmin                    |
+| real estate management system |
+| realestatemanagementsystem    |
+| test                          |
+| users                         |
++-------------------------------+
+8 rows in set (0.00 sec)
+
+mysql> use realestatemanagementsystem;
+Database changed
+mysql> show tables;
++--------------------------------------+
+| Tables_in_realestatemanagementsystem |
++--------------------------------------+
+| agency                               |
+| clients                              |
+| documents                            |
+| payments                             |
+| property                             |
+| transactions                         |
+| users                                |
++--------------------------------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from clients;
++-----------+-------+--------------------+-----------+-------------------+
+| client_id | name  | Email              | Phone     | prefered_property |
++-----------+-------+--------------------+-----------+-------------------+
+|         1 | devis | devis123@gmail.com | 784443344 | house             |
+|         2 | dev   | dev123@gmail.com   | 784443444 | apartment         |
++-----------+-------+--------------------+-----------+-------------------+
+2 rows in set (0.00 sec)
+
+mysql> select *from users;
++---------+-----------+----------+-------+-------------------+-----------+
+| user_id | user_name | password | role  | Email             | phone     |
++---------+-----------+----------+-------+-------------------+-----------+
+|       1 | donatha   | don123   | admin | don123@gmail.com  | 784444444 |
+|       2 | donathe   | don1234  | agent | dona123@gmail.com | 754444444 |
++---------+-----------+----------+-------+-------------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select *from agency;
++----------+----------+--------------------+-----------+-------------+
+| agent_id | name     | Email              | Phone     | Agency_name |
++----------+----------+--------------------+-----------+-------------+
+|        1 | donathee | donat123@gmail.com | 784444444 | familyfast  |
+|        2 | donathe  | dona123@gmail.com  | 754444444 | happyhome   |
++----------+----------+--------------------+-----------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> desc property;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Property_id   | int(20)     | NO   | PRI | NULL    |       |
+| Title         | varchar(25) | NO   |     | NULL    |       |
+| description   | varchar(25) | NO   |     | NULL    |       |
+| property_type | varchar(30) | NO   |     | NULL    |       |
+| Location      | varchar(12) | NO   |     | NULL    |       |
+| price         | varchar(12) | NO   |     | NULL    |       |
+| agent_id      | int(25)     | NO   | MUL | NULL    |       |
+| Status        | varchar(18) | NO   |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+8 rows in set (0.03 sec)
+
+mysql> insert into property values('0011','comppp','fdesc','trrr','kigali','120000',001,'cod');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into property values('0012','compp','fdecc','try','huye','150000',002,'code');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> desc documents;
++----------------+---------+------+-----+---------+-------+
+| Field          | Type    | Null | Key | Default | Extra |
++----------------+---------+------+-----+---------+-------+
+| document_id    | int(12) | NO   | PRI | NULL    |       |
+| Property_id    | int(18) | NO   | MUL | NULL    |       |
+| client_id      | int(20) | NO   | MUL | NULL    |       |
+| transaction_id | int(22) | NO   | MUL | NULL    |       |
+| uploaded_date  | date    | NO   |     | NULL    |       |
++----------------+---------+------+-----+---------+-------+
+5 rows in set (0.04 sec)
+
+mysql> desc transactions;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| transaction_id   | int(20)     | NO   | PRI | NULL    |       |
+| property_id      | int(18)     | NO   | MUL | NULL    |       |
+| client_id        | int(19)     | NO   | MUL | NULL    |       |
+| agent_id         | int(20)     | NO   | MUL | NULL    |       |
+| transaction_type | varchar(30) | NO   |     | NULL    |       |
+| price            | varchar(12) | NO   |     | NULL    |       |
+| transaction_date | date        | NO   |     | NULL    |       |
+| payment_status   | varchar(14) | NO   |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+8 rows in set (0.04 sec)
+
+mysql> insert into transactions values('0014','0011','01','1','roon','150300','15-09-2023','pending');
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+mysql> insert into transactions values('0015','0012','02','2','bedroom','150400','15-09-2013','complete');
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+mysql> insert into documents values('0016','0011','01','0014','17-9-2012');
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql> insert into documents values('0017','0012','02','0015','17-9-2022');
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+mysql> desc payments;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| payment_id     | int(20)     | NO   | PRI | NULL    |       |
+| transaction_id | int(22)     | NO   | MUL | NULL    |       |
+| amount         | varchar(18) | NO   |     | NULL    |       |
+| date           | date        | NO   |     | NULL    |       |
+| payment_method | varchar(17) | NO   |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.05 sec)
+
+mysql> insert into documents values('0017','0014','18000','07-9-2024','visacard');
+ERROR 1062 (23000): Duplicate entry '17' for key 'PRIMARY'
+mysql> insert into payments values('0017','0014','18000','07-9-2024','visacard');
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+mysql> insert into payments values('0018','0015','180000','07-9-2025','momo');
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+mysql> select *from users;
++---------+-----------+----------+-------+-------------------+-----------+
+| user_id | user_name | password | role  | Email             | phone     |
++---------+-----------+----------+-------+-------------------+-----------+
+|       1 | donatha   | don123   | admin | don123@gmail.com  | 784444444 |
+|       2 | donathe   | don1234  | agent | dona123@gmail.com | 754444444 |
++---------+-----------+----------+-------+-------------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select *from payments;
++------------+----------------+--------+------------+----------------+
+| payment_id | transaction_id | amount | date       | payment_method |
++------------+----------------+--------+------------+----------------+
+|         17 |             14 | 18000  | 0000-00-00 | visacard       |
+|         18 |             15 | 180000 | 0000-00-00 | momo           |
++------------+----------------+--------+------------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select *from clients;
++-----------+-------+--------------------+-----------+-------------------+
+| client_id | name  | Email              | Phone     | prefered_property |
++-----------+-------+--------------------+-----------+-------------------+
+|         1 | devis | devis123@gmail.com | 784443344 | house             |
+|         2 | dev   | dev123@gmail.com   | 784443444 | apartment         |
++-----------+-------+--------------------+-----------+-------------------+
+2 rows in set (0.00 sec)
+
+mysql> select *from transactions;
++----------------+-------------+-----------+----------+------------------+--------+------------------+----------------+
+| transaction_id | property_id | client_id | agent_id | transaction_type | price  | transaction_date | payment_status |
++----------------+-------------+-----------+----------+------------------+--------+------------------+----------------+
+|             14 |          11 |         1 |        1 | roon             | 150300 | 0000-00-00       | pending        |
+|             15 |          12 |         2 |        2 | bedroom          | 150400 | 0000-00-00       | complete       |
++----------------+-------------+-----------+----------+------------------+--------+------------------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select *from documents;
++-------------+-------------+-----------+----------------+---------------+
+| document_id | Property_id | client_id | transaction_id | uploaded_date |
++-------------+-------------+-----------+----------------+---------------+
+|          16 |          11 |         1 |             14 | 0000-00-00    |
+|          17 |          12 |         2 |             15 | 0000-00-00    |
++-------------+-------------+-----------+----------------+---------------+
+2 rows in set (0.00 sec)
+
+mysql> select *from property;
++-------------+--------+-------------+---------------+----------+--------+----------+--------+
+| Property_id | Title  | description | property_type | Location | price  | agent_id | Status |
++-------------+--------+-------------+---------------+----------+--------+----------+--------+
+|          11 | comppp | fdesc       | trrr          | kigali   | 120000 |        1 | cod    |
+|          12 | compp  | fdecc       | try           | huye     | 150000 |        2 | code   |
++-------------+--------+-------------+---------------+----------+--------+----------+--------+
+2 rows in set (0.00 sec)
+
+mysql>
+DROP TABLE transactions;
+DROP TABLE payments;
+DROP TABLE clients;
