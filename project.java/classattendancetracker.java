@@ -6,7 +6,7 @@ public class classattendancetracker {
         
         System.out.println("=== Class Attendance Tracker ===");
         
-        // Get total number of students
+        //total student
         int totalStudents = 0;
         while (true) {
             System.out.print("Enter the total number of students in the class: ");
@@ -23,16 +23,15 @@ public class classattendancetracker {
             }
         }
         
-        // Initialize array for attendance (max 30 days)
+        // Initialize array for attendance 
         int[] attendance = new int[30];
         int dayCount = 0;
         String continueEntry;
         
-        // Do-while loop to record attendance
+      
         do {
             System.out.println("\n--- Day " + (dayCount + 1) + " ---");
-            
-            // Get number of students present
+         
             int present = -1;
             while (present < 0 || present > totalStudents) {
                 System.out.print("Enter number of students present: ");
@@ -43,15 +42,14 @@ public class classattendancetracker {
                     }
                 } else {
                     System.out.println("Please enter a valid number.");
-                    scanner.next(); // Clear invalid input
+                    scanner.next(); 
                 }
             }
             
-            // Store attendance for the day
+          
             attendance[dayCount] = present;
             dayCount++;
-            
-            // Ask if user wants to continue
+
             if (dayCount < 30) {
                 System.out.print("Do you want to enter attendance for another day? (yes/no): ");
                 continueEntry = scanner.next().toLowerCase();
@@ -62,7 +60,7 @@ public class classattendancetracker {
             
         } while (continueEntry.equals("yes") && dayCount < 30);
         
-        // Calculate statistics
+                                                                                                                                                                                                                                             
         int totalPresent = 0;
         int lowAttendanceDays = 0;
         double fiftyPercentThreshold = totalStudents * 0.5;
@@ -99,3 +97,4 @@ public class classattendancetracker {
         scanner.close();
     }
 }
+
